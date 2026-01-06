@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+viewer/node_modules/
+viewer/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output
+data/
+output/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local config
+*.local
+.env

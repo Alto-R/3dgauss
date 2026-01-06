@@ -1,0 +1,27 @@
+{
+  "name": "3dgauss-viewer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.117.3",
+    "three": "^0.170.0",
+    "3d-tiles-renderer": "^0.4.11",
+    "leva": "^0.9.35"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}
