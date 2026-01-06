@@ -6,10 +6,13 @@ Usage:
     python -m cli.main serve --data <path> [--port <port>]
     python -m cli.main --help
 """
-import argparse
 import sys
 from multiprocessing import freeze_support
 
+# Windows 多进程支持 - 必须在导入其他模块之前调用
+freeze_support()
+
+import argparse
 from .convert import run_convert
 from .serve import run_serve
 
@@ -55,5 +58,4 @@ def main():
 
 
 if __name__ == "__main__":
-    freeze_support()
     main()
