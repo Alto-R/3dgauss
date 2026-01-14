@@ -26,7 +26,7 @@ class Point:
         return cls(position, color, scale, rotation)
 
 
-def compute_box(points: List[Point]) -> List[float]:
+def compute_box(points: List[Point]) -> List[float]:    
     positions = np.array([point.position for point in points])
     min_coords = np.min(positions, axis=0)
     max_coords = np.max(positions, axis=0)

@@ -1,9 +1,10 @@
-__version__ = '1.0.0'
+
+__version__ = '0.1'
 import os
 import struct
 from typing import List
 
-from .point import Point
+from point import Point
 
 
 point_size = 3*4 + 3*4 + 4*1 + 4*1  # 3 float32 + 3 float32 + 4 uint8 + 4 uint8 = 32字节
@@ -16,7 +17,7 @@ def getPointSize():
 
 
 def get_point_num(file_path: str) -> int:
-    stats = os.stat(file_path)
+    stats = os.stat(file_path)    
     point_size = getPointSize()
     point_num = stats.st_size // point_size
     return point_num
@@ -39,6 +40,9 @@ def read_splat_file(file_path: str) -> List[Point]:
             color = struct.unpack('4B', f.read(4 * 1))
             rotation = struct.unpack('4B', f.read(4 * 1))
 
+            # 调整四元数顺序 (x, y, z, w) -> (w, x, y, z)
+            # rotation = (rotation[1], rotation[2], rotation[3], rotation[0])
+
             points.append(Point(position, color, scale, rotation))
     return points
 
@@ -57,5 +61,6 @@ def write_splat_file(file_path: str, points: List[Point]):
             f.write(struct.pack('3f', *point.scale))
             # 写入颜色 (4个 Byte)
             f.write(struct.pack('4B', *point.color))
-            # 写入旋转 (4个 Byte)
+            # 写入旋转 (4个 Byte)，调整四元数顺序 (w, x, y, z) -> (x, y, z, w)
+            # rotation = (point.rotation[1], point.rotation[2], point.rotation[3], point.rotation[0])
             f.write(struct.pack('4B', *point.rotation))

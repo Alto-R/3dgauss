@@ -1,3 +1,4 @@
+
 import math
 import numpy as np
 
@@ -50,24 +51,24 @@ def geodetic_to_ecef_transformation(longitude, latitude, height=0, r=6378137.0, 
     # 将角度转换为弧度
     phi = math.radians(latitude)
     lam = math.radians(longitude)
-
+    
     # 计算椭球体的曲率半径
     e2 = 2 * f - f ** 2
     N = r / math.sqrt(1 - e2 * math.sin(phi) ** 2)
-
+    
     # 计算 ECEF 坐标
     x = (N + height) * math.cos(phi) * math.cos(lam)
     y = (N + height) * math.cos(phi) * math.sin(lam)
     z = (N * (1 - e2) + height) * math.sin(phi)
-
+    
     # 构造变换矩阵
 
-    transformation_matrix = np.array([
+    transformation_matrix = np.array([        
         -math.sin(lam), math.cos(lam), 0, 0,
         -math.sin(phi)*math.cos(lam), -math.sin(phi)*math.sin(lam), math.cos(phi), 0,
         math.cos(phi)*math.cos(lam), math.cos(phi)*math.sin(lam), math.sin(phi), 0,
         x, y, z, 1
     ])
 
-
+    
     return transformation_matrix

@@ -37,13 +37,13 @@ def run_pipeline(
 
     clean_output_dir = os.path.join(build_output_dir, f"{tile_zoom}")
 
-    # 步骤 1: 切割瓦片 (已完成，跳过)
-    # print(f"----split_to_tiles start:[{tile_zoom}][{input_path}][{split_output_dir}]")
-    # split_to_tiles(input_path, split_output_dir, enu_origin, tile_zoom)
+    # 步骤 1: 切割瓦片
+    print(f"----split_to_tiles start:[{tile_zoom}][{input_path}][{split_output_dir}]")
+    split_to_tiles(input_path, split_output_dir, enu_origin, tile_zoom)
 
-    # 步骤 2: 清洗数据 (已完成，跳过)
-    # print(f"----clean_tiles start:[{tile_zoom}][{split_output_dir}][{clean_output_dir}]")
-    # clean_tiles(split_output_dir, clean_output_dir, min_alpha, max_scale, flyers_num, flyers_dis)
+    # 步骤 2: 清洗数据
+    print(f"----clean_tiles start:[{tile_zoom}][{split_output_dir}][{clean_output_dir}]")
+    clean_tiles(split_output_dir, clean_output_dir, min_alpha, max_scale, flyers_num, flyers_dis)
 
     # 步骤 3: 构建 LOD (5 级)
     lod_zoom = tile_zoom - 1

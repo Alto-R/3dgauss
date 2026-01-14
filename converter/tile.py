@@ -1,7 +1,7 @@
 from collections import defaultdict
 import os
 from typing import List, Tuple
-from .point import Point, compute_box
+from point import Point, compute_box
 
 
 # 定义瓦片的数据结构
@@ -15,10 +15,10 @@ class TileId:
     def toString(self) -> str:
         """将瓦片 ID 转换为字符串"""
         return f"tile_{self.z}_{self.x}_{self.y}"
-
+    
     def getFilePath(self, output_dir: str, ext: str) -> str:
-        splat_file = f"{self.toString()}{ext}"
-        output_file = os.path.join(output_dir, splat_file)
+        splat_file = f"{self.toString()}{ext}"        
+        output_file = os.path.join(output_dir, splat_file) 
         return output_file
 
     @staticmethod
@@ -55,7 +55,7 @@ class TileId:
 
     def getParent(self):
         return TileId(int(self.x / 2), int(self.y / 2), int(self.z - 1))
-
+    
     def __eq__(self, other):
         if not isinstance(other, TileId):
             return False
@@ -78,11 +78,11 @@ class Tile:
     def getPointCount(self) -> int:
         """获取瓦片内点的数量"""
         return len(self.points)
-
+    
     def addPoint(self, point: 'Point'):
         """向瓦片添加点"""
         self.points.append(point)
-
+    
     def setPoints(self, points: List[Point]):
         self.points = points
         self.bounds = compute_box(points)
@@ -90,19 +90,24 @@ class Tile:
     def getPoints(self) -> List[Point]:
         """获取瓦片内的所有点"""
         return self.points
-
+    
     def addChild(self, tile: 'Tile'):
         self.children.append(tile)
 
     def getChildren(self):
         return self.children
-
+    
     def setChildren(self, children: List['Tile']):
         self.children = children
-
+    
     def getTileId(self) -> TileId:
         """获取瓦片 ID"""
         return self.tile_id
-
+    
     def getBounds(self):
         return self.bounds
+
+
+
+
+

@@ -8,13 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
+    "@types/mapbox-gl": "^3.4.1",
+    "3d-tiles-renderer": "^0.4.11",
+    "leva": "^0.9.35",
+    "mapbox-gl": "^3.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "@react-three/fiber": "^8.17.10",
-    "@react-three/drei": "^9.117.3",
     "three": "^0.170.0",
-    "3d-tiles-renderer": "^0.4.11",
-    "leva": "^0.9.35"
+    "three-custom-shader-material": "^6.4.0",
+    "utility-types": "^3.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",
